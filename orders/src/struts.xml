@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="false" />
+
+	<package name="orders" extends="json-default" namespace="/">
+	<!-- 测试的Action -->
+	   <action name="JsonAction_*" class="JsonAction" method="{1}">
+			<result name="jsontest" type="json">
+						<param name="root">cname</param>
+			</result>
+		</action>
+	
+	    <!-- 去登陆的Action -->
+		<action name="Admin_*" class="AdminAction" method="{1}">
+			<result name="tologin">/admin/index.jsp</result>
+		</action>
+		<!-- 去主页的action -->
+		<action name="AdminUser_*" class="AdminUserAction" method="{1}">
+			<result name="tohome">/admin/home.jsp</result>
+			<result name="productinfo">/admin/product/list.jsp</result>
+		</action>	
+		<!--  Staff的crud-->
+		<action name="AdminStaff_*" class="AdminStaffAction" method="{1}">
+				<result name="staffinfo">/admin/staff/list.jsp</result>
+				<result name="updatestaffok" type="redirectAction">AdminStaff_findAllStaff.action</result>
+				<result name="deleteok" type="redirectAction">AdminStaff_findAllStaff.action</result>
+				<result name="updateok" type="redirectAction">AdminStaff_findAllStaff.action</result>		
+		</action>	
+		<!-- 供应商的crud -->
+		<action name="AdminSupplier_*" class="AdminSupplierAction" method="{1}">
+				<result name="supplierList">/admin/supplier/list.jsp</result>
+				<result name="addsupplier" type="redirectAction">AdminSupplier_findAllSupplier.action</result>
+				<result name="deleteok" type="redirectAction">AdminSupplier_findAllSupplier.action</result>	
+		</action>	
+		<!-- Product的crud -->
+			<action name="AdminProduct_*" class="AdminProductAction" method="{1}">
+				<result name="productList">/admin/product/list.jsp</result>
+				<result name="querylist" type="json">
+					<param name="root">jsonArray</param>
+			 	</result>
+		   </action>	
+
+		
+	</package>
+</struts>

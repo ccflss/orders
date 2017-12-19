@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping default-lazy="false">
+	<class name="orders.vo.Staff" table="staff">
+		<id name="s_id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="s_name"/>
+		<property name="s_phone"/>
+		<property name="s_job"/>
+		<property name="s_leavetime"/>
+		<property name="s_cometime"/>
+		<property name="s_power"/>
+		<set name="supplier">
+			<key column="s_id"></key>
+			<one-to-many class="orders.vo.Supplier"/>
+		</set>
+		<set name="warehouse">
+			<key column="s_id"></key>
+			<one-to-many class="orders.vo.Warehouse"/>
+		</set>
+	
+		
+	</class>
+</hibernate-mapping>

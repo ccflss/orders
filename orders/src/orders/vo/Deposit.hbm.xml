@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping default-lazy="false">
+	<class name="orders.vo.Deposit" table="deposit">
+		<id name="deposit_id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="deposit_intime"/>
+		<property name="deposit_outtime"/>
+		<property name="deposit_num"/>
+		
+	
+		
+	</class>
+</hibernate-mapping>

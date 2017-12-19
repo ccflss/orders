@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping default-lazy="false">
+	<class name="orders.vo.Product" table="product">
+		<id name="pid">
+			<generator class="native"/>
+		</id>
+		
+		<property name="pname"/>
+		<property name="pprice"/>
+		<property name="pnum"/>
+		<property name="pdate"/>
+		<property name="pfrom"/>
+		<!-- product和supplier的多对多的对应关系，第三张表为supply  主键为pid-->
+     	<set name="supplier" table="supply">
+			<key column="pid"></key>
+			<many-to-many class="orders.vo.Supplier" column="sid"/>
+		</set>
+			<set name="warehouse" table="deposit">
+			<key column="pid"></key>
+			<many-to-many class="orders.vo.Warehouse" column="wid"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

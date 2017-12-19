@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping default-lazy="false">
+	<class name="orders.vo.Warehouse" table="warehouse">
+		<id name="wid">
+			<generator class="native"/>
+		</id>
+		
+		<property name="wname"/>
+		<property name="wnum"/>
+		<property name="waddr"/>
+		<property name="wsize"/>
+		
+        <many-to-one name="staff" class="orders.vo.Staff" column="s_id"></many-to-one>	
+          <set name="product" table="deposit">
+			<key column="wid"></key>
+			<many-to-many class="orders.vo.Product" column="pid"/>
+		  </set>
+        
+	</class>
+</hibernate-mapping>
